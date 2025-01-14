@@ -3,7 +3,7 @@ from common.registry import Registry
 from generator import LaneVehicleGenerator, IntersectionPhaseGenerator, IntersectionVehicleGenerator
 import numpy as np
 import gym
-
+import random
 
 @Registry.register_model('maxpressure')
 class MaxPressureAgent(BaseAgent):
@@ -128,6 +128,7 @@ class MaxPressureAgent(BaseAgent):
                 action = phase_id
                 max_pressure = pressure
 
+        action = random.choice(list(range(len(self.inter_obj.phases))))
         return action
 
     def get_queue(self):
